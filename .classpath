@@ -2,5 +2,17 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/Cornell/languagetool/languagetool-wikipedia/target/LanguageTool-wikipedia-3.4-SNAPSHOT/LanguageTool-wikipedia-3.4-SNAPSHOT/libs/commons-io.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/cogroo-ann/target/cogroo-ann-4.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/cogroo-nlp/target/cogroo-nlp-4.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/cogroo-gc/target/cogroo-gc-4.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/lang/pt_br/cogroo-addon/target/cogroo-addon-pt_br-4.0.0.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/lang/pt_br/cogroo-addon/target/cogroo-4.0.0-bin.oxt/lib/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/lang/pt_br/cogroo-ann/src/main/resources"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/Cornell/google-io-extra.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/lang/pt_br/cogroo-addon/target/cogroo-4.0.0-bin.oxt/lib/opennlp-tools-1.5.3.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/lang/pt_br/cogroo-res/models"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/UFMG/cogroo-4.0.0-src/lang/pt_br/cogroo-addon/target/cogroo-4.0.0-bin.oxt/cogroo-addon-pt_br.jar"/>
+	<classpathentry kind="lib" path="/Users/evelin.amorim/Documents/Cornell/JCorretorOrtografico-master/target/JCorretorOrtografico-1.0.jar" sourcepath="/Users/evelin.amorim/Documents/Cornell/JCorretorOrtografico-master/src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
