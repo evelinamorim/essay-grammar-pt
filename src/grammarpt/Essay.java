@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
@@ -30,6 +31,7 @@ import com.giullianomorroni.jcorretor.SugestaoOrtografia;
 
 //import com.memetix.mst.language.Language;
 //import com.memetix.mst.translate.Translate;
+import grammarpt.tools;
 
 public class Essay {
 	
@@ -38,7 +40,10 @@ public class Essay {
 	private String generalComment;
 	private String specificComments;
 	
+	private tools toolObj = new tools();
+	
 	private HashMap skills = new HashMap();
+	
 	public enum SkillTypes{
 	     UNDERSTANDING, SELECTINGINFO, SHOWKNOW, SOLUTION, FORMAL 	
 	}
@@ -115,6 +120,28 @@ public class Essay {
 		}
 	}
 	
+	public int numSyllable(List<Token> lstTokens){
+		int nSyllable = 0;
+		
+		for(Token t: lstTokens){
+			String [] lsttokens = t.getLexeme().split("_");
+			for (String w: lsttokens){
+				
+			    ArrayList<String> s = toolObj.word2syllables(w);
+				nSyllable = nSyllable + s.size();
+			}
+
+		}
+		return nSyllable;
+	}
+	
+	public int fleschScore(float syllPerWord, float wordsPerSent){
+        int fs = 0;
+        double score = 206.835 - (84.6 * syllPerWord) - (1.015 * wordsPerSent) + 42;  
+        
+        return fs;
+	}
+	
 	public void extractFeatures(Analyzer c) throws IllegalArgumentException, IOException{
 		
 		GrammarChecker gc = new GrammarChecker(c);
@@ -127,19 +154,29 @@ public class Essay {
 		
 		// as features of mistakes (remove space errors): number of grammar mistakes, 
 		// number of mistakes per number of words
+		// number of syllabes per word
+		// number of words per sentence
+		
 		List<Mistake> mlist = doc.getMistakes();
 		
 		int ntokens = 0;
 		int wordlenghtSum = 0;
-		for (Sentence s : doc.getSentences()){
-			List<Token> lstTokens = s.getTokens(); 
+		float avgsyll = 0;
+		List<Sentence> lstSentence = doc.getSentences(); 
+		for (Sentence s : lstSentence){
+			List<Token> lstTokens = s.getTokens();
+			avgsyll = avgsyll + numSyllable(lstTokens);
 			ntokens = ntokens + lstTokens.size();
 			for (Token t : lstTokens){
 			    wordlenghtSum = wordlenghtSum + t.toString().length();
 			}
 		}
 		int nErrors = mlist.size();
-		int nErrorsTokens =  nErrors / ntokens;
+		float nErrorsTokens =  nErrors / ntokens;
+		avgsyll = avgsyll / ntokens;
+		float tokensperSentence = lstSentence.size() / ntokens ;
+		
+		double fs = fleschScore(avgsyll, tokensperSentence);
 		
 		// average word length
 		int avgWordLength = wordlenghtSum / ntokens;

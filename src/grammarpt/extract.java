@@ -19,5 +19,16 @@ public class extract {
 		   Analyzer cogroo = factory.createPipe();
 		   
 		   essayList.get(0).extractFeatures(cogroo);
+		   
+		   /*tools t = new tools();
+	       
+		   List<String> s = t.word2syllables("uma");
+		   System.out.println(s.size());
+		   for (String i: s){
+		      System.out.println(i);
+		   }*/
+
+		   //System.out.println("teste");
+		   // System.out.println(t.stressed_syll("bueiro"));
 	   }
 }
