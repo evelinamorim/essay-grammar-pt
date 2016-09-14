@@ -19,7 +19,7 @@ public class ReadData {
 					// each directory contains essays from one topic
 					List<Essay> topicEssays = processdir(f);
 					essayList.addAll(topicEssays);
-					break;
+					//break;
 				}
 			}
 			return essayList;
@@ -39,5 +39,7 @@ public class ReadData {
 			}
 			return essayList;
 		}
+		
+		
 
 }

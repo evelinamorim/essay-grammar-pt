@@ -480,7 +480,7 @@ public class tools {
 	            
 					   if (nucleo - 1 >= 0){
 						   
-						   if (nucleo + 1 < wlen && isConsoante(w, nucleo - 1) && (isDigrafo(w, nucleo + 1) 
+						   if (nucleo + 3 < wlen && isConsoante(w, nucleo - 1) && (isDigrafo(w, nucleo + 1) 
 								// regra 6
 								   || (w.charAt(nucleo + 1) == 'c' && w.charAt(nucleo + 2) == 'h'))
 							         && nucleo + 3 < wlen && isVogal(w, nucleo + 3) ){
@@ -824,7 +824,7 @@ public class tools {
 				}
 				
 				// regra 16
-				if (lenw >= 4 && (w.charAt(i) == 'a' || w.charAt(i) == 'e' 
+				if (lenw > 4 && (w.charAt(i) == 'a' || w.charAt(i) == 'e' 
 						|| w.charAt(i) == 'o') && isConsoante(w, i - 1) && w.charAt(i - 2) == 'n' 
 						&& (w.charAt(i - 3) == 'i' || w.charAt(i - 3) == 'u') && isVogalSemi(w.charAt(i - 4)) 
 						&& stressedlevel > 16){
@@ -895,14 +895,14 @@ public class tools {
 				}
 				
 				// regra 9
-				if (w.charAt(i) == 's' && (w.charAt(i - 1) == 'i' || w.charAt(i - 1) == 'u')
+				if (i - 2 >= 0 && w.charAt(i) == 's' && (w.charAt(i - 1) == 'i' || w.charAt(i - 1) == 'u')
 						&& !isVogal(w, i-2) && stressedlevel > 9){
 					stressedlevel = 9;
 					stressedpos = i - 1;
 				}
 					
 				// regra 8 
-				if (w.charAt(i) == 's' && (w.charAt(i - 1) == 'i' || w.charAt(i - 1) == 'u')
+				if (i - 1 >= 0 && w.charAt(i) == 's' && (w.charAt(i - 1) == 'i' || w.charAt(i - 1) == 'u')
 						&& isVogalSemi(w.charAt(i-2)) && stressedlevel > 8){
 					stressedlevel = 8;
 					stressedpos = i - 2;
@@ -910,7 +910,7 @@ public class tools {
 				
 				// regra 7
 				if ((w.charAt(i) == 'i' || w.charAt(i) == 'u') && stressedlevel > 7){
-					if (isVogalSemi(w.charAt(i-1)) && w.charAt(i-1) != 'u'){
+					if (i-1>= 0 && isVogalSemi(w.charAt(i-1)) && w.charAt(i-1) != 'u'){
 					    stressedpos = i - 1;	
 					}else{
 						stressedpos = i;
@@ -921,7 +921,7 @@ public class tools {
 				}
 				
 				// regra 6
-				if (w.charAt(i) == 's' && w.charAt(i-1) == 'i'
+				if (i-3>=0 && w.charAt(i) == 's' && w.charAt(i-1) == 'i'
 						&& (w.charAt(i-2) == 'u' || w.charAt(i-2) == 'ü')
 						&& (w.charAt(i-3) == 'q' || w.charAt(i-3) == 'g')
 						&& stressedlevel > 6){
@@ -930,7 +930,7 @@ public class tools {
 				}
 				
 				// regra 5
-				if (w.charAt(i) == 'i' && (w.charAt(i-1) == 'u' || w.charAt(i-1) == 'ü')
+				if (i-2>= 0 && w.charAt(i) == 'i' && (w.charAt(i-1) == 'u' || w.charAt(i-1) == 'ü')
 						&& (w.charAt(i-2) == 'q' || w.charAt(i-2) == 'g')
 						&& stressedlevel > 5){
 					stressedlevel = 5;
@@ -939,7 +939,7 @@ public class tools {
 				}
 				
 				// regra 4
-				if (w.charAt(i) == 's' && w.charAt(i-1) == 'n' 
+				if (i-1>= 0 && w.charAt(i) == 's' && w.charAt(i-1) == 'n' 
 						&& (w.charAt(i-2) == 'i' || w.charAt(i-2) == 'o' || w.charAt(i-2) == 'u')
 						&& stressedlevel > 4){
 					stressedlevel = 4;
@@ -948,7 +948,7 @@ public class tools {
 				}
 				
 			    // regra 3
-				if (w.charAt(i) == 'm' && (w.charAt(i-1) == 'i' 
+				if (i-1>= 0 && w.charAt(i) == 'm' && (w.charAt(i-1) == 'i' 
 						|| w.charAt(i-1) == 'o' || w.charAt(i-1) == 'u')
 						&& stressedlevel > 3){
 					  stressedlevel = 3;
